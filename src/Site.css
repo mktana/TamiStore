@@ -1,0 +1,28 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas: " data data chat chat sidebar";
+  height: 100vh;
+  background-color: rgb(241 237 237 / 55%);
+}
+
+.search {
+  display: flex;
+  margin: 2px;
+}
+
+.sidebar {
+  grid-area: sidebar search;
+  border: 2px solid rgb(222, 217, 217);
+}
+
+.chat {
+  grid-area: chat;
+  border: 2px solid rgb(222, 217, 217);
+  background-color: white;
+}
+
+.data {
+  grid-area: data;
+  border: 2px solid rgb(222, 217, 217);
+}
