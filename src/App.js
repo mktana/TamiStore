@@ -1,14 +1,13 @@
 
 import './App.css';
-import Site from './site';
+import Site from './glassixSite/Site';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>GLASSIX-SITE</h1>
+        <h1>GLASSIXSITE</h1>
       </header>
-
       <Site />
     </div>
   );
