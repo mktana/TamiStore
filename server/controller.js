@@ -1,23 +1,23 @@
-//const fs = require('fs');
 const Customer = require('./model');
 const APIFeatures = require('./utils/apiFeatures')
 
 exports.customerName = (req, res, next) => {
-  req.query.fields = 'name, phone';
+  //req.query.limit
+  //req.query.sort
+  req.query.fields = 'name';   // phone, address...
   next();
 };
 
 exports.getAllCustomers = async (req, res) => {
   try {
-    //Execute Query
+    //Execute Query: query.sort().select().skip().limit()
     const features = new APIFeatures(Customer.find(), req.query)
       .filter()
       .sort()
       .limitFields()
       .paginate();
     const customers = await features.query;
-    // query.sort().select().skip().limit()
-
+    
     // Send response
     res.status(200).json({
       status: 'success',
@@ -64,7 +64,7 @@ exports.createCustomer = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: 'Invalid',
+      message: err,
     });
   }
 };
@@ -82,9 +82,9 @@ exports.updateCustomer = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
       status: 'fail',
-      message: 'Invalid',
+      message: err,
     });
   }
 };
@@ -92,14 +92,43 @@ exports.updateCustomer = async (req, res) => {
 exports.deleteCustomer = async (req, res) => {
   try {
     await Customer.findByIdAndDelete(req.params.id);
+
     res.status(204).json({
       status: 'success',
       data: null,
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
       status: 'fail',
-      message: 'Invalid',
+      message: err,
     });
   }
 };
+
+// exports.getCustomerStatus = async (req, res) => {
+//   try {
+//     const status = Customer.aggregate([
+//       {
+//         $match: { statusAverage: { $gte: 4  } }
+//       },
+//       {
+//         $group: {
+//           _id: null,
+//           avgStatus: { $avg: '$statusAverage' }
+//         }
+//       }
+//     ])
+
+//     res.status(200).json({
+//       status: 'success',
+//       data: {
+//         status
+//       }
+//     });
+//   } catch (err) {
+//     res.status(404).json({
+//       status: 'fail',
+//       message: err,
+//     });
+//   }
+// }

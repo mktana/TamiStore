@@ -6,6 +6,8 @@ const router = express.Router();
 // router.param('id', controller.checkID);
 router.route('/names').get(controller.customerName, controller.getAllCustomers);
 
+//router.route('/customer-status').get(controller.getCustomerStatus);
+
 router
   .route('/')
   .get(controller.getAllCustomers)
