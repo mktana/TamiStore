@@ -15,7 +15,8 @@ const customerSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
     // select: false
-  }
+  }, 
+  toString
 });
  
 const Customer = mongoose.model('Customer', customerSchema);

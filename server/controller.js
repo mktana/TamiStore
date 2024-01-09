@@ -107,15 +107,18 @@ exports.deleteCustomer = async (req, res) => {
 
 // exports.getCustomerStatus = async (req, res) => {
 //   try {
-//     const status = Customer.aggregate([
+//     const status = await Customer.aggregate([
+//       // {
+//       //   $match: { statusAverage: { $gte: 4  } }
+//       // },
+//       // {
+//       //   $group: {
+//       //     _id: null,
+//       //     avgStatus: { $avg: '$statusAverage' }
+//       //   }
+//       // }
 //       {
-//         $match: { statusAverage: { $gte: 4  } }
-//       },
-//       {
-//         $group: {
-//           _id: null,
-//           avgStatus: { $avg: '$statusAverage' }
-//         }
+//         $sort: {  }
 //       }
 //     ])
 
