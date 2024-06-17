@@ -1,6 +1,5 @@
-import { Box, Container } from '@mui/material';
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { Box, Card, Container } from '@mui/material';
 
 function NotFound() {
   return (
@@ -14,9 +13,15 @@ function NotFound() {
           minHeight: '100vh',
         }}
       >
+        <Card sx={{height:'300px', width: '300px', bgcolor: '#e3f2fd', display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',}}>
         <h1>Oops!</h1>
         <p>404v - Page Not Found</p>
-        <Link to='/'>Back To Home Page</Link>
+        <Link to='/'>
+        Back To Home Page</Link>
+        </Card>
       </Box>
     </Container>
   );
