@@ -1,15 +1,20 @@
-
-import './App.css';
-import Site from './glassixSite/Site';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// layout
+import Navbar from './components/layout/Navbar';
+// pages
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>GLASSIXSITE</h1>
-      </header>
-      <Site />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/' />
+        <Route path='/*' element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
